@@ -1,0 +1,75 @@
+#include "Graph.h"
+#include <iostream>
+using namespace std;
+
+int main() {
+    Graph G;
+    create_List(G);
+    addlokasi(G);
+
+    int pilih;
+    do {
+        cout << "============================\n";
+        cout << "           Menu\n";
+        cout << "============================\n";
+        cout << "info tentang zona\n";
+        cout << "Hijau : aman\n";
+        cout << "Oren : berbahaya\n";
+        cout << "Merah : sangat berbahaya\n";
+        cout << "============================\n";
+        cout << "1. Tampilkan Semua Lokasi dan Koneksinya\n";
+        cout << "2. Cari Lokasi Bertetangga\n";
+        cout << "3. Putuskan Hubungan Lokasi\n";
+        cout << "4. Hapus Lokasi\n";
+        cout << "5. Cari jalur aman\n";
+        cout << "0. Keluar\n";
+        cout << "Pilihan: ";
+        cin >> pilih;
+
+        switch (pilih) {
+        case 1: {
+            showAll(G);
+            break;
+        }
+        case 2: {
+            string id;
+            cout << "Masukkan ID lokasi: ";
+            cin >> id;
+            Pencariantetangga(G, id);
+            break;
+        }
+        case 3: {
+            string id1, id2;
+            cout << "Masukkan ID lokasi pertama: ";
+            cin >> id1;
+            cout << "Masukkan ID lokasi kedua: ";
+            cin >> id2;
+            disconnecting(G, id1, id2);
+            cout << "Hubungan antara lokasi " << id1 << " dan " << id2 << " berhasil diputus." << endl;
+            break;
+        }
+        case 4: {
+            string id;
+            cout << "Masukkan ID lokasi yang ingin dihapus: ";
+            cin >> id;
+            deleteNode(G, id);
+            break;
+        }
+        case 5: {
+            string id;
+            cout << "Masukkan ID lokasi yang ingin dicari jalur amannya: ";
+            cin >> id;
+            jalurAman(G, id);
+            break;
+        }
+        case 0:
+            cout << "Keluar dari program." << endl;
+            break;
+        default:
+            cout << "Pilihan tidak valid." << endl;
+        }
+
+    } while (pilih != 0);
+
+    return 0;
+}
