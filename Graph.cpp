@@ -31,7 +31,7 @@ void addNode(Graph &G, adr_Node P) {
         }
 }
 
-adr_Node findNode(Graph &G, string id) {
+adr_Node findNode(Graph G, string id) {
     adr_Node P = G.firstG;
     while (P != NULL) {
         if (P->info.id == id) {
