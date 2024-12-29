@@ -37,7 +37,7 @@ void create_List(Graph &G);
 adr_Node createN(infotypeN x);
 adr_Edge createE(infotypeE a);
 void addNode(Graph &G, adr_Node P);
-adr_Node findNode(Graph &G, string id);
+adr_Node findNode(Graph G, string id);
 void addEdge(Graph &G, string id, adr_Edge P);
 void connecting(Graph &G, string id, string id2, string zone);
 adr_Edge findEdge(adr_Node P, string id);
