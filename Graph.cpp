@@ -230,40 +230,29 @@ void Pencariantetangga(Graph G, string id) {
 }
 
 void jalurAman(Graph G, string id) {
-    adr_Node node = findNode(G, id);
-    if (node != NULL) {
-        adr_Edge edge = node->firstE;
-        if (edge == NULL) {
-            cout << "Tidak ada koneksi." << endl;
+    adr_Node b = findNode(G, id);
+    if (b != NULL){
+        adr_Edge a = b->firstE;
+        if (a == NULL){
+            cout << "Tidak ada koneksi dari lokasi " << b->info.nama << endl;
         } else {
-            bool adaZonaHijau = false;
-            cout << "Lokasi yang aman untuk dituju dari " << node->info.nama << ": " << endl;
+            cout << "Lokasi yang aman dituju dari " << b->info.nama << " :" << endl;
+            bool adaZonaH = false;
             int i = 1;
-            while (edge != NULL) {
-                if (edge->info.zona == "hijau") {
-                    adaZonaHijau = true;
-                    cout << i << ". " << edge->info.nama << " (ID: " << edge->info.id << ", Zona: " << edge->info.zona << ")" << endl;
-                    if (edge->next != NULL) {
-                        adr_Edge a = edge->next;
-                        bool adaHijauLain = false;
-                        while (a != NULL) {
-                            if (a->info.zona == "hijau") {
-                                adaHijauLain = true;
-                                break;
-                            }
-                            a = a->next;
-                        }
-                    }
+            while(a!=NULL){
+                if (a->info.zona == "Hijau"){
+                    cout << i << ". lokasi " << a->info.nama << " , id: " << a->info.id << ", zona: " << a->info.zona << endl;
+                    i++;
+                    adaZonaH = true;
                 }
-                i++;
-                edge = edge->next;
+                a = a->next;
             }
-            if (!adaZonaHijau) {
-                cout << "Tidak ada lokasi dengan zona hijau." << endl;
+            if (!adaZonaH) {
+                cout << "Tidak ada zona aman dari lokasi " << b->info.nama << endl;
             }
         }
     } else {
-        cout << "Lokasi dengan ID " << id << " tidak ditemukan." << endl;
+        cout << "Lokasi yang diinput tidak ada" << endl;
     }
 }
 
